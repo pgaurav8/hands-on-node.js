@@ -1,6 +1,3 @@
-### Steps to run
-
-npm start 
 
 ## Explored following things
 
