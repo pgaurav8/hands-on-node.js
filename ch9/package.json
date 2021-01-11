@@ -1,0 +1,20 @@
+{
+  "name": "ch9",
+  "version": "1.0.0",
+  "description": "Hands-on Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgaurav8/hands-on-node.js.git"
+  },
+  "author": "Gaurav Parmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgaurav8/hands-on-node.js/issues"
+  },
+  "homepage": "https://github.com/pgaurav8/hands-on-node.js#readme"
+}
