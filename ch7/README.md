@@ -1,6 +1,3 @@
-## Steps to Run 
-
-npm start
 
 ## Event Emitters
 
