@@ -1,7 +1,3 @@
-## Steps to Run 
-
-npm start
-
 ## Why
 
 The event loop working
