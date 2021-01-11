@@ -1,6 +1,4 @@
-### Steps to Run
 
-npm start
 
 ## Utiliy  Chapter
  
