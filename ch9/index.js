@@ -1,72 +1,151 @@
-// File Statistics
-
+// Importing File Module
 var fs = require('fs');
 
-fs.stat('/etc/passwd', function(err, stats) {
-    if (err) {console.log(err.message); return; }
-    console.log(stats);
-    //console.log('this file is ' + stats.size + ' bytes long.');
-});
-
-// Read File
-
-var fs = require('fs');
-fs.open('/home/parmar/temp/ch9/prog9.js', 'r', function(err, fd) {
-if (err) { throw err }
-var readBuffer = new Buffer(1024),
-bufferOffset = 0,
-bufferLength = readBuffer.length,
-filePosition = 100;
-
-fs.read(fd, readBuffer,bufferOffset, bufferLength, filePosition,
-    function(err, readBytes) {
-        if (err) { throw err; }
-        console.log('just read ' + readBytes + ' bytes');
-        
-        if (readBytes > 0) {
-            console.log(readBuffer.slice(0, readBytes));
-        }
-    });
-});
-
-fs.open('/home/parmar/temp/ch9/test.txt', 'a', function(err, fd) {
-    var writeBuffer = new Buffer('writing this string'),
-    bufferOffset = 0,
-    bufferLength = writeBuffer.length,
-    filePosition = null;
-
-    fs.write(
-        fd,
-        writeBuffer,
-        bufferOffset,
-        bufferLength,
-        filePosition,
-        function(err, written) {
-            if (err) { throw err; }
-            console.log('wrote ' + written + ' bytes');
-        }
-    );
-});
-
-// Appender
-
-var startAppender = function(fd, startPos) {
-    var pos = startPos;
-    return {
-    append: function(buffer, callback) {
-    var oldPos = pos;
-    pos += buffer.length;
-    fs.write(fd, buffer, 0, buffer.length, oldPos, callback);
+// Displays File Stastics
+fs.stat('/home/parmar/temp/ch9/test.txt', function(err, stats){
+    if(err){
+        console.log(err.message);
+        return;
     }
-    };
-    };
 
-// Start Appender
+    console.log(stats.isFile());
+    console.log(stats.isFIFO());
+    console.log(stats);
+});
 
-fs.open('/tmp/test.txt', 'w', function(err, fd) {
-    if (err) {throw err; }
-    var appender = startAppender(fd, 0);
-    appender.append(new Buffer('append this!'), function(err) {
-    console.log('appended');
+// Reading a File
+
+fs.open('/home/parmar/temp/ch9/test.txt', 'r', function(err, fd){
+    if(err){
+        console.log(err.message);
+        return;
+    }
+
+    var readBuffer = new Buffer (1024);
+
+    fs.read(fd, readBuffer, 0, readBuffer.length, 0, function(err, readBytes){
+        if(err)
+            throw err;
+
+        console.log('Just Read ' + readBytes + ' Bytes');
+
+        if(readBytes>0){
+            console.log(readBuffer.toString());
+        }
     });
+});
+
+// Write In a File
+
+fs.open('/home/parmar/temp/ch9/test.txt', 'a', function(err, fd){
+    var writeBuffer = new Buffer('Gaurav Parmar');
+
+    fs.write(fd, writeBuffer, 0, writeBuffer.length, null, function(err, writeBytes){
+        if(err)
+            throw err;
+
+        console.log(' Written ' + writeBytes + ' Bytes');
     });
+});
+
+// Excercise 1
+
+
+fs.stat('/home/parmar/temp/ch9/a.txt', function(err, stats){
+    if(err){
+        console.log(err.message);
+        return;
+    }
+    console.log('\n\n Excercise 1 : \n\n');
+    console.log('\n' + stats.size + ' is size of a.txt file \n\n');
+});
+
+
+// Excercise 4
+
+fs.open('/home/parmar/temp/ch9/a.txt', 'w', function(err, fd){
+    var writeBuffer = new Buffer('ABCDEFGHIJLKLMNOPQRSTUVXYZ0123456789abcdefghijklmnopqrstuvxyz','utf-8');
+
+    fs.write(fd, writeBuffer, 0, writeBuffer.length, null, function(err, writeBytes){
+        if(err)
+            throw err;
+        console.log('\n\n Excercise 4 : \n\n');
+        console.log(' Written ' + writeBytes + ' Bytes');
+    });
+});
+
+
+// Excercise 5
+fs.open('/home/parmar/temp/ch9/a.txt', 'a', function(err, fd){
+    var writeBuffer = new Buffer('abc','utf-8');
+
+    fs.write(fd, writeBuffer, 0, writeBuffer.length, null, function(err, writeBytes){
+        if(err)
+            throw err;
+        console.log('\n\n Excercise 5 : \n\n');
+        console.log(' Written ' + writeBytes + ' Bytes');
+    });
+});
+
+// Excercise 6
+fs.open('/home/parmar/temp/ch9/a.txt', 'w', function(err, fd){
+    var writeBuffer = new Buffer('7','utf-8');
+
+    fs.write(fd, writeBuffer, 0, writeBuffer.length, 7, function(err, writeBytes){
+        if(err)
+            throw err;
+        console.log('\n\n Excercise 6 : \n\n');
+        console.log(' Written ' + writeBytes + ' Bytes');
+    });
+});
+
+// Excercise 2
+
+fs.open('/home/parmar/temp/ch9/a.txt', 'r', function(err, fd){
+    if(err){
+        console.log(err.message);
+        return;
+    }
+
+    var readBuffer = new Buffer (1024);
+
+    fs.read(fd, readBuffer, 0, readBuffer.length, 0, function(err, readBytes){
+        if(err)
+            throw err;
+
+        console.log('\n\n Excercise 2 : \n\n');
+        console.log('Just Read ' + readBytes + ' Bytes');
+
+        if(readBytes>0){
+            console.log(readBuffer.slice(10,14).toString());
+        }
+    });
+});
+
+// Excercise 3
+
+fs.open('/home/parmar/temp/ch9/a.txt', 'r', function(err, fd){
+    if(err){
+        console.log(err.message);
+        return;
+    }
+
+    var readBuffer = new Buffer (1024);
+
+    fs.read(fd, readBuffer, 0, readBuffer.length, 0, function(err, readBytes){
+        if(err)
+            throw err;
+
+        console.log('\n\n Excercise 3 : \n\n');
+        console.log('Just Read ' + readBytes + ' Bytes');
+
+        if(readBytes>0){
+            
+            console.log('\n\n');
+            console.log(readBuffer.slice(5,9).toString());
+            console.log('\n\n');
+            console.log(readBuffer.slice(10,14).toString());
+            console.log('\n\n');
+        }
+    });
+});
