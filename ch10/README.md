@@ -1,6 +1,6 @@
 ## Http
 
-#### Http Server Creation and Listening ( The http.ServerRequest object )
+#### Http Server Creation and Listening (The http.ServerRequest object)
 
 req.url
 
