@@ -1,7 +1,6 @@
 // Spawning Process and waiting to complete execution
 
 var exec = require('child_process').exec;
-
 exec('cat *.js', function(err,stdout,stderr){
     if(err){
         console.log(' Child process exited with error code, ' + err.code);
@@ -13,7 +12,6 @@ exec('cat *.js', function(err,stdout,stderr){
 var options = {
     timeout : 6000000
 };
-
 exec('echo Hello', options, function(err,stdout,stderr){
     if(err){
         console.log(' Child process exited with error code, ' + err.code);
