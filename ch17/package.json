@@ -1,0 +1,20 @@
+{
+  "name": "ch17",
+  "version": "1.0.0",
+  "description": "Hands-on Node.js",
+  "main": "prog17_client.js",
+  "scripts": {
+    "start" : "node prog17_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgaurav8/hands-on-node.js.git"
+  },
+  "author": "Gaurav Parmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgaurav8/hands-on-node.js/issues"
+  },
+  "homepage": "https://github.com/pgaurav8/hands-on-node.js#readme"
+}
