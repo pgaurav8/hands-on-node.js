@@ -4,6 +4,7 @@
   "description": "Hands-on Node.js",
   "main": "excercise-1.js",
   "scripts": {
+    "start": "node prog16.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
