@@ -1,7 +1,7 @@
 {
   "name": "ch21",
   "version": "1.0.0",
-  "description": "Hands-on Node.j",
+  "description": "Hands-on Node.js",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
